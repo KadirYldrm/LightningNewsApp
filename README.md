@@ -4,6 +4,8 @@
 
 ## TECH
 
+### MVVM Clean Architecture
+
 - LiveData
 - ViewBinding
 - Room
