@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/FRNews">
+
+    <fragment
+        android:id="@+id/FRNews"
+        android:name="com.example.lightningnews.presentation.fragments.FRNews"
+        android:label="fr_news"
+        tools:layout="@layout/fr_news" >
+        <action
+            android:id="@+id/action_FRNews_to_FRInfo"
+            app:destination="@id/FRInfo" />
+    </fragment>
+    <fragment
+        android:id="@+id/FRSaved"
+        android:name="com.example.lightningnews.presentation.fragments.FRSaved"
+        android:label="fr_saved"
+        tools:layout="@layout/fr_saved" >
+        <action
+            android:id="@+id/action_FRSaved_to_FRInfo"
+            app:destination="@id/FRInfo" />
+    </fragment>
+    <fragment
+        android:id="@+id/FRInfo"
+        android:name="com.example.lightningnews.presentation.fragments.FRInfo"
+        android:label="fr_info"
+        tools:layout="@layout/fr_info" >
+        <argument
+            android:name="selected_article"
+            app:argType="com.example.lightningnews.data.model.Article" />
+    </fragment>
+</navigation>
