@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginTop="10dp"
-    android:background="@color/list_background"
+    android:background="@color/bordeaux"
     android:orientation="vertical">
 
     <TextView

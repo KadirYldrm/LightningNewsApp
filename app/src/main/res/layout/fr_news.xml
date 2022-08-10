@@ -4,21 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/layout_background"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".presentation.fragments.FRNews">
 
     <SearchView
         android:id="@+id/svFRNews"
-        android:background="@color/search_bg"
+        android:theme="@style/AppSearchView"
+        android:background="@color/bordeaux"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+
     <ProgressBar
-        android:layout_width="match_parent"
+        android:layout_width="100dp"
         android:id="@+id/pbFRNews"
+        android:layout_gravity="center"
         android:visibility="gone"
-        android:layout_height="match_parent"/>
+        android:layout_height="100dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFRNews"

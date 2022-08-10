@@ -17,6 +17,7 @@ import com.example.lightningnews.databinding.FrNewsBinding
 import com.example.lightningnews.presentation.ACMain
 import com.example.lightningnews.presentation.adapter.NewsAdapter
 import com.example.lightningnews.presentation.viewmodel.NewsVM
+import kotlinx.android.synthetic.main.fr_news.*
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -128,6 +129,7 @@ class FRNews : Fragment(R.layout.fr_news) {
     private fun setSearchView() {
 
         fragmentNewsBinding.svFRNews.setOnQueryTextListener(
+
                 object : SearchView.OnQueryTextListener {
                     override fun onQueryTextSubmit(p0: String?): Boolean {
                         viewModel.searchNews("us", p0.toString(), page)
