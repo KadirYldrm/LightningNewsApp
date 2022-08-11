@@ -2,15 +2,18 @@ package com.example.lightningnews.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.lightningnews.data.model.Article
-import com.example.lightningnews.databinding.NewsListItemBinding
+import com.example.lightningnews.databinding.RowNewsBinding
+import com.example.lightningnews.dateTimeUtils.DateTime
+import com.example.lightningnews.presentation.fragments.FRNewsArgs
 
 class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
-
+    var clicked = false
     private val callback = object : DiffUtil.ItemCallback<Article>() {
         override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean {
             return oldItem.url == newItem.url
@@ -25,7 +28,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
     val differ = AsyncListDiffer(this, callback)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
-        val binding = NewsListItemBinding
+        val binding = RowNewsBinding
                 .inflate(LayoutInflater.from(parent.context), parent, false)
         return NewsViewHolder(binding)
     }
@@ -40,25 +43,43 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
     }
 
     inner class NewsViewHolder(
-            val binding: NewsListItemBinding
+            val binding: RowNewsBinding
     ) : RecyclerView.ViewHolder(binding.root) {
+
 
         fun bind(article: Article) {
             with(binding) {
                 tvTitle.text = article.title
                 tvDescription.text = article.description
-                tvPublishedAt.text = article.publishedAt
+
+                tvPublishedAt.text = DateTime.convertDateString(date = article.publishedAt!!,
+                        toFormatPattern = DateTime.DefaultFormatPattern,
+                        fromFormatPattern = DateTime.IsoFormatPattern)
+
                 tvSource.text = article.source?.name
             }
             Glide.with(binding.ivArticleImage.context)
                     .load(article.urlToImage)
                     .into(binding.ivArticleImage)
 
+            binding.ivRowItem.setOnClickListener {
+                clicked = true
+                if (clicked) {
+                    onItemClickListener?.let {
+                        it(article)
+                    }
+                } else {
+                    clicked = false
+                }
+            }
             binding.root.setOnClickListener {
                 onItemClickListener?.let {
                     it(article)
+
                 }
             }
+
+
         }
 
     }

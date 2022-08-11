@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_FRNews_to_FRInfo"
             app:destination="@id/FRInfo" />
+        <argument
+            android:name="selected_article2"
+            app:argType="com.example.lightningnews.data.model.Article" />
     </fragment>
     <fragment
         android:id="@+id/FRSaved"

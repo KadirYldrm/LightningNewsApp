@@ -30,6 +30,7 @@ class FRSaved : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         fragmentSavedBinding = FrSavedBinding.bind(view)
         viewModel = (activity as ACMain).viewModel
         newsAdapter = (activity as ACMain).newsAdapter

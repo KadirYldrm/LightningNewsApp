@@ -9,11 +9,13 @@ import android.widget.AbsListView
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lightningnews.R
 import com.example.lightningnews.data.util.Resource
 import com.example.lightningnews.databinding.FrNewsBinding
+import com.example.lightningnews.databinding.RowNewsBinding
 import com.example.lightningnews.presentation.ACMain
 import com.example.lightningnews.presentation.adapter.NewsAdapter
 import com.example.lightningnews.presentation.viewmodel.NewsVM
@@ -47,12 +49,20 @@ class FRNews : Fragment(R.layout.fr_news) {
         fragmentNewsBinding = FrNewsBinding.bind(view)
         viewModel = (activity as ACMain).viewModel
         newsAdapter = (activity as ACMain).newsAdapter
+
         newsAdapter.setOnItemClickListener {
-            val bundle = Bundle().apply {
-                putSerializable("selected_article", it)
+            if (newsAdapter.clicked) {
+                viewModel.saveArticle(it)
+                Toast.makeText(context, "saved", Toast.LENGTH_LONG).show()
+            } else {
+                val bundle = Bundle().apply {
+                    putSerializable("selected_article", it)
+                }
+                findNavController().navigate(R.id.action_FRNews_to_FRInfo, bundle)
             }
-            findNavController().navigate(R.id.action_FRNews_to_FRInfo, bundle)
+            newsAdapter.clicked = false
         }
+
         initRecyclerView()
         viewNewsList()
         setSearchView()
@@ -147,15 +157,15 @@ class FRNews : Fragment(R.layout.fr_news) {
                     }
 
                 })
-                fragmentNewsBinding.svFRNews.setOnCloseListener(
-                        object :SearchView.OnCloseListener{
-                            override fun onClose(): Boolean {
-                                initRecyclerView()
-                                viewNewsList()
-                                return false
-                            }
+        fragmentNewsBinding.svFRNews.setOnCloseListener(
+                object : SearchView.OnCloseListener {
+                    override fun onClose(): Boolean {
+                        initRecyclerView()
+                        viewNewsList()
+                        return false
+                    }
 
-                        })
+                })
     }
 
     fun viewSearchedNews() {

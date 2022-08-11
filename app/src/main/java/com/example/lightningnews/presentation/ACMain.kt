@@ -24,6 +24,7 @@ class ACMain : AppCompatActivity() {
     private lateinit var binding: AcMainBinding
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = AcMainBinding.inflate(layoutInflater)
@@ -37,5 +38,6 @@ class ACMain : AppCompatActivity() {
                 navController
         )
         viewModel = ViewModelProvider(this,factory)[NewsVM::class.java]
+
     }
 }

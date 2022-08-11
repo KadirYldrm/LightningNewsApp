@@ -1,6 +1,6 @@
 package com.example.lightningnews.presentation.fragments
 
-import android.graphics.Color
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -41,5 +41,7 @@ class FRInfo : Fragment() {
             viewModel.saveArticle(article)
             Snackbar.make(view,"Saved Successfully!",Snackbar.LENGTH_LONG).show()
         }
+
+
     }
 }
