@@ -2,8 +2,6 @@ package com.example.lightningnews.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -12,7 +10,6 @@ import com.example.lightningnews.R
 import com.example.lightningnews.data.model.Article
 import com.example.lightningnews.databinding.RowNewsBinding
 import com.example.lightningnews.dateTimeUtils.DateTime
-import com.example.lightningnews.presentation.fragments.FRNewsArgs
 
 class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
     var clicked = false

@@ -14,42 +14,84 @@
         android:background="@color/bordeaux"
         android:theme="@style/AppSearchView" />
 
-    <LinearLayout
+    <HorizontalScrollView
+        android:id="@+id/nsvFRNews"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:fillViewport="true">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnSports"
-            android:background="@drawable/btn_shape"
-            android:textColor="@color/layout_background"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="sports" />
+            android:orientation="horizontal">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnTech"
-            android:layout_width="wrap_content"
-            android:background="@drawable/btn_shape"
-            android:padding="5dp"
-            android:textColor="@color/layout_background"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="technology" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSports"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/btn_shape"
+                android:text="@string/sports"
+                android:textColor="@color/layout_background" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnHealth"
-            android:layout_width="wrap_content"
-            android:background="@drawable/btn_shape"
-            android:textColor="@color/layout_background"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="health" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnTech"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/btn_shape"
+                android:padding="5dp"
+                android:text="@string/technology"
+                android:textColor="@color/layout_background" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnHealth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/btn_shape"
+                android:text="@string/health"
+                android:textColor="@color/layout_background" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnScience"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/btn_shape"
+                android:text="@string/science"
+                android:textColor="@color/layout_background" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnBusiness"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/btn_shape"
+                android:text="@string/business"
+                android:textColor="@color/layout_background" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnEntertainment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/btn_shape"
+                android:text="@string/entertainment"
+                android:textColor="@color/layout_background" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnGeneral"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/btn_shape"
+                android:text="@string/general"
+                android:textColor="@color/layout_background" />
 
 
-    </LinearLayout>
+        </LinearLayout>
+    </HorizontalScrollView>
 
 
     <ProgressBar

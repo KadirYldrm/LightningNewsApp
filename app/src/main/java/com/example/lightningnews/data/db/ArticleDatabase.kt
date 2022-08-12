@@ -11,7 +11,7 @@ import com.example.lightningnews.data.model.Article
         exportSchema = false
 )
 @TypeConverters(Converters::class)
-abstract class ArticleDatabase:RoomDatabase() {
+abstract class ArticleDatabase : RoomDatabase() {
 
-    abstract fun getArticleDAO():ArticleDAO
+    abstract fun getArticleDAO(): ArticleDAO
 }

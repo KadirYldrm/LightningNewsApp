@@ -13,7 +13,7 @@ class AdapterModule {
 
     @Singleton
     @Provides
-    fun provideNewsAdapter():NewsAdapter{
+    fun provideNewsAdapter(): NewsAdapter {
         return NewsAdapter()
     }
 }

@@ -1,7 +1,6 @@
 package com.example.lightningnews.dateTimeUtils
 
 
-
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -12,7 +11,6 @@ object DateTime {
     const val DateTimeNV2 = "dd/MM/yyyy HH:mm"
     const val IsoFormatPattern = "yyyy-MM-dd'T'HH:mm:ss.SSS"
     const val DateTimeFormatPattern1 = "yyyy-MM-dd'T'HH:mm:ss"
-
 
 
     fun convertDateString(

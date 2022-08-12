@@ -13,14 +13,12 @@ import com.example.lightningnews.data.model.APIResponse
 import com.example.lightningnews.data.model.Article
 import com.example.lightningnews.data.util.Resource
 import com.example.lightningnews.domain.usecase.*
-import com.example.lightningnews.presentation.Category
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
-class NewsVM(
-        private val app:Application,
+class FRNewsVM(
+        private val app: Application,
         private val getNewsHeadLinesUseCase: GetNewsHeadLinesUseCase,
         private val getSearchedNewsUseCase: GetSearchedNewsUseCase,
         private val saveNewsUseCase: SaveNewsUseCase,
@@ -34,10 +32,9 @@ class NewsVM(
         newsHeadLines.postValue(Resource.Loading())
         if (isNetworkAvailable(app)) {
 
-            val apiResult = getNewsHeadLinesUseCase.execute(category,country, page)
+            val apiResult = getNewsHeadLinesUseCase.execute(category, country, page)
             newsHeadLines.postValue(apiResult)
-        }
-        else{
+        } else {
             newsHeadLines.postValue(Resource.Error("Internet is not available"))
         }
 
@@ -70,42 +67,42 @@ class NewsVM(
         return false
     }
 
-    val searchedNews : MutableLiveData<Resource<APIResponse>> = MutableLiveData()
+    val searchedNews: MutableLiveData<Resource<APIResponse>> = MutableLiveData()
 
     fun searchNews(
             country: String,
-            searchQuery:String,
+            searchQuery: String,
             page: Int
     ) = viewModelScope.launch {
         searchedNews.postValue(Resource.Loading())
 
         try {
 
-            if (isNetworkAvailable(app)){
+            if (isNetworkAvailable(app)) {
                 val response = getSearchedNewsUseCase.execute(
                         country, searchQuery, page
                 )
                 searchedNews.postValue(response)
-            }else{
+            } else {
                 searchedNews.postValue(Resource.Error("No internet connection"))
             }
 
-        }catch (e:Exception){
+        } catch (e: Exception) {
             searchedNews.postValue(Resource.Error(e.message.toString()))
         }
     }
 
-    fun saveArticle(article: Article)=viewModelScope.launch {
+    fun saveArticle(article: Article) = viewModelScope.launch {
         saveNewsUseCase.execute(article)
     }
 
-    fun getSavedNews()= liveData {
-        getSavedNewsUseCase.execute().collect{
+    fun getSavedNews() = liveData {
+        getSavedNewsUseCase.execute().collect {
             emit(it)
         }
     }
 
-    fun deleteArticle(article: Article)=viewModelScope.launch {
+    fun deleteArticle(article: Article) = viewModelScope.launch {
         deleteSavedNewsUseCase.execute(article)
     }
 }

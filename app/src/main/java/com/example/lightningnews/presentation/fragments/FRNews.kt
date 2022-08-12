@@ -16,19 +16,19 @@ import com.example.lightningnews.R
 import com.example.lightningnews.data.util.Resource
 import com.example.lightningnews.databinding.FrNewsBinding
 import com.example.lightningnews.presentation.ACMain
-import com.example.lightningnews.presentation.Category
+import com.example.lightningnews.presentation.CategoryNews
 import com.example.lightningnews.presentation.adapter.NewsAdapter
-import com.example.lightningnews.presentation.viewmodel.NewsVM
+import com.example.lightningnews.presentation.viewmodel.FRNewsVM
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class FRNews : Fragment(R.layout.fr_news) {
 
-    private lateinit var viewModel: NewsVM
+    private lateinit var viewModel: FRNewsVM
     private lateinit var newsAdapter: NewsAdapter
     private lateinit var fragmentNewsBinding: FrNewsBinding
-    private var category = Category.sports
+    private var categoryNews = CategoryNews.General
     private var country = "tr"
     private var page = 1
     private var isScrolling = false
@@ -74,9 +74,9 @@ class FRNews : Fragment(R.layout.fr_news) {
     private fun viewNewsList() {
 
         fragmentNewsBinding.btnSports.setOnClickListener {
-            category=Category.sports
+            categoryNews = CategoryNews.Sports
 
-            viewModel.getNewsHeadLines(category.toString(), country, page)
+            viewModel.getNewsHeadLines(categoryNews.toString(), country, page)
             viewModel.newsHeadLines.observe(viewLifecycleOwner) { response ->
                 when (response) {
                     is Resource.Success -> {
@@ -108,9 +108,9 @@ class FRNews : Fragment(R.layout.fr_news) {
             }
         }
         fragmentNewsBinding.btnTech.setOnClickListener {
-            category=Category.technology
+            categoryNews = CategoryNews.Technology
 
-            viewModel.getNewsHeadLines(category.toString(), country, page)
+            viewModel.getNewsHeadLines(categoryNews.toString(), country, page)
             viewModel.newsHeadLines.observe(viewLifecycleOwner) { response ->
                 when (response) {
                     is Resource.Success -> {
@@ -142,9 +142,9 @@ class FRNews : Fragment(R.layout.fr_news) {
             }
         }
         fragmentNewsBinding.btnHealth.setOnClickListener {
-            category=Category.health
+            categoryNews = CategoryNews.Health
 
-            viewModel.getNewsHeadLines(category.toString(), country, page)
+            viewModel.getNewsHeadLines(categoryNews.toString(), country, page)
             viewModel.newsHeadLines.observe(viewLifecycleOwner) { response ->
                 when (response) {
                     is Resource.Success -> {
@@ -176,7 +176,146 @@ class FRNews : Fragment(R.layout.fr_news) {
             }
         }
 
-        viewModel.getNewsHeadLines(category.toString(), country, page)
+        fragmentNewsBinding.btnBusiness.setOnClickListener {
+
+            categoryNews = CategoryNews.Business
+            viewModel.getNewsHeadLines(categoryNews.toString(), country, page)
+            viewModel.newsHeadLines.observe(viewLifecycleOwner) { response ->
+                when (response) {
+                    is Resource.Success -> {
+                        isLoading = false
+                        fragmentNewsBinding.pbFRNews.visibility = View.GONE
+                        response.data?.let {
+                            newsAdapter.differ.submitList(it.articles.toList())
+                            if (it.totalResults % 20 == 0) {
+                                pages = it.totalResults / 20
+                            } else {
+                                pages = it.totalResults / 20 + 1
+                            }
+                            isLastPage = page == pages
+                        }
+                    }
+                    is Resource.Error -> {
+                        isLoading = false
+                        fragmentNewsBinding.pbFRNews.visibility = View.GONE
+                        response.message?.let {
+                            Toast.makeText(activity, "An error occurred: $it", Toast.LENGTH_LONG).show()
+                        }
+                    }
+                    is Resource.Loading -> {
+                        isLoading = true
+                        fragmentNewsBinding.pbFRNews.visibility = View.VISIBLE
+
+                    }
+                }
+            }
+        }
+
+        fragmentNewsBinding.btnEntertainment.setOnClickListener {
+
+            categoryNews = CategoryNews.Entertainment
+
+            viewModel.getNewsHeadLines(categoryNews.toString(), country, page)
+            viewModel.newsHeadLines.observe(viewLifecycleOwner) { response ->
+                when (response) {
+                    is Resource.Success -> {
+                        isLoading = false
+                        fragmentNewsBinding.pbFRNews.visibility = View.GONE
+                        response.data?.let {
+                            newsAdapter.differ.submitList(it.articles.toList())
+                            if (it.totalResults % 20 == 0) {
+                                pages = it.totalResults / 20
+                            } else {
+                                pages = it.totalResults / 20 + 1
+                            }
+                            isLastPage = page == pages
+                        }
+                    }
+                    is Resource.Error -> {
+                        isLoading = false
+                        fragmentNewsBinding.pbFRNews.visibility = View.GONE
+                        response.message?.let {
+                            Toast.makeText(activity, "An error occurred: $it", Toast.LENGTH_LONG).show()
+                        }
+                    }
+                    is Resource.Loading -> {
+                        isLoading = true
+                        fragmentNewsBinding.pbFRNews.visibility = View.VISIBLE
+
+                    }
+                }
+            }
+        }
+
+        fragmentNewsBinding.btnScience.setOnClickListener {
+            categoryNews = CategoryNews.Science
+            viewModel.getNewsHeadLines(categoryNews.toString(), country, page)
+            viewModel.newsHeadLines.observe(viewLifecycleOwner) { response ->
+                when (response) {
+                    is Resource.Success -> {
+                        isLoading = false
+                        fragmentNewsBinding.pbFRNews.visibility = View.GONE
+                        response.data?.let {
+                            newsAdapter.differ.submitList(it.articles.toList())
+                            if (it.totalResults % 20 == 0) {
+                                pages = it.totalResults / 20
+                            } else {
+                                pages = it.totalResults / 20 + 1
+                            }
+                            isLastPage = page == pages
+                        }
+                    }
+                    is Resource.Error -> {
+                        isLoading = false
+                        fragmentNewsBinding.pbFRNews.visibility = View.GONE
+                        response.message?.let {
+                            Toast.makeText(activity, "An error occurred: $it", Toast.LENGTH_LONG).show()
+                        }
+                    }
+                    is Resource.Loading -> {
+                        isLoading = true
+                        fragmentNewsBinding.pbFRNews.visibility = View.VISIBLE
+
+                    }
+                }
+            }
+        }
+
+        fragmentNewsBinding.btnGeneral.setOnClickListener {
+            categoryNews = CategoryNews.General
+            viewModel.getNewsHeadLines(categoryNews.toString(), country, page)
+            viewModel.newsHeadLines.observe(viewLifecycleOwner) { response ->
+                when (response) {
+                    is Resource.Success -> {
+                        isLoading = false
+                        fragmentNewsBinding.pbFRNews.visibility = View.GONE
+                        response.data?.let {
+                            newsAdapter.differ.submitList(it.articles.toList())
+                            if (it.totalResults % 20 == 0) {
+                                pages = it.totalResults / 20
+                            } else {
+                                pages = it.totalResults / 20 + 1
+                            }
+                            isLastPage = page == pages
+                        }
+                    }
+                    is Resource.Error -> {
+                        isLoading = false
+                        fragmentNewsBinding.pbFRNews.visibility = View.GONE
+                        response.message?.let {
+                            Toast.makeText(activity, "An error occurred: $it", Toast.LENGTH_LONG).show()
+                        }
+                    }
+                    is Resource.Loading -> {
+                        isLoading = true
+                        fragmentNewsBinding.pbFRNews.visibility = View.VISIBLE
+
+                    }
+                }
+            }
+        }
+
+        viewModel.getNewsHeadLines(categoryNews.toString(), country, page)
         viewModel.newsHeadLines.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is Resource.Success -> {
@@ -209,7 +348,7 @@ class FRNews : Fragment(R.layout.fr_news) {
 
         fragmentNewsBinding.srlFRNews.setOnRefreshListener {
 
-            viewModel.getNewsHeadLines(category.toString(), country, page)
+            viewModel.getNewsHeadLines(categoryNews.toString(), country, page)
             viewModel.newsHeadLines.observe(viewLifecycleOwner) { response ->
                 when (response) {
                     is Resource.Success -> {
@@ -277,7 +416,7 @@ class FRNews : Fragment(R.layout.fr_news) {
 
             if (shouldPaginate) {
                 page++
-                viewModel.getNewsHeadLines(category.toString(), country, page)
+                viewModel.getNewsHeadLines(categoryNews.toString(), country, page)
                 isScrolling = false
             }
         }

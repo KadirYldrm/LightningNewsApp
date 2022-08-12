@@ -5,5 +5,5 @@ import com.example.lightningnews.domain.repository.NewsRepository
 
 class DeleteSavedNewsUseCase(private val newsRepository: NewsRepository) {
 
-    suspend fun execute(article: Article)=newsRepository.deleteNews(article)
+    suspend fun execute(article: Article) = newsRepository.deleteNews(article)
 }

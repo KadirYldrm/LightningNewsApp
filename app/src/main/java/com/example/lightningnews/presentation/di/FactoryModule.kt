@@ -2,7 +2,7 @@ package com.example.lightningnews.presentation.di
 
 import android.app.Application
 import com.example.lightningnews.domain.usecase.*
-import com.example.lightningnews.presentation.viewmodel.NewsViewModelFactory
+import com.example.lightningnews.presentation.viewmodel.FRNewsVMFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,8 +22,8 @@ class FactoryModule {
             saveNewsUseCase: SaveNewsUseCase,
             getSavedNewsUseCase: GetSavedNewsUseCase,
             deleteSavedNewsUseCase: DeleteSavedNewsUseCase
-    ):NewsViewModelFactory {
-        return NewsViewModelFactory(application,getNewsHeadLinesUseCase,getSearchedNewsUseCase,saveNewsUseCase,getSavedNewsUseCase,deleteSavedNewsUseCase)
+    ): FRNewsVMFactory {
+        return FRNewsVMFactory(application, getNewsHeadLinesUseCase, getSearchedNewsUseCase, saveNewsUseCase, getSavedNewsUseCase, deleteSavedNewsUseCase)
 
     }
 }

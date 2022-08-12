@@ -13,14 +13,14 @@ import com.example.lightningnews.R
 import com.example.lightningnews.databinding.FrSavedBinding
 import com.example.lightningnews.presentation.ACMain
 import com.example.lightningnews.presentation.adapter.NewsAdapter
-import com.example.lightningnews.presentation.viewmodel.NewsVM
+import com.example.lightningnews.presentation.viewmodel.FRNewsVM
 import com.google.android.material.snackbar.Snackbar
 
 class FRSaved : Fragment() {
 
     private lateinit var fragmentSavedBinding: FrSavedBinding
     private lateinit var newsAdapter: NewsAdapter
-    private lateinit var viewModel: NewsVM
+    private lateinit var viewModel: FRNewsVM
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -59,10 +59,10 @@ class FRSaved : Fragment() {
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
-                val article =  newsAdapter.differ.currentList[position]
+                val article = newsAdapter.differ.currentList[position]
                 viewModel.deleteArticle(article)
-                Snackbar.make(view,"Deleted Successfully",Snackbar.LENGTH_LONG).apply {
-                    setAction("Undo"){
+                Snackbar.make(view, "Deleted Successfully", Snackbar.LENGTH_LONG).apply {
+                    setAction("Undo") {
                         viewModel.saveArticle(article)
                     }
                     show()

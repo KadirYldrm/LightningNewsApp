@@ -33,7 +33,7 @@ class UseCaseModule {
     @Provides
     fun provideSaveNewsUseCase(
             newsRepository: NewsRepository
-    ):SaveNewsUseCase{
+    ): SaveNewsUseCase {
         return SaveNewsUseCase(newsRepository)
     }
 
@@ -41,7 +41,7 @@ class UseCaseModule {
     @Provides
     fun provideGetSavedNewsUseCase(
             newsRepository: NewsRepository
-    ):GetSavedNewsUseCase{
+    ): GetSavedNewsUseCase {
         return GetSavedNewsUseCase(newsRepository)
     }
 
@@ -49,7 +49,7 @@ class UseCaseModule {
     @Provides
     fun provideDeleteNewsUseCase(
             newsRepository: NewsRepository
-    ):DeleteSavedNewsUseCase{
+    ): DeleteSavedNewsUseCase {
         return DeleteSavedNewsUseCase(newsRepository)
     }
 }

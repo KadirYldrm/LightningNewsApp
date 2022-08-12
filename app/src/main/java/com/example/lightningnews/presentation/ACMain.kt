@@ -8,8 +8,8 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.lightningnews.R
 import com.example.lightningnews.databinding.AcMainBinding
 import com.example.lightningnews.presentation.adapter.NewsAdapter
-import com.example.lightningnews.presentation.viewmodel.NewsVM
-import com.example.lightningnews.presentation.viewmodel.NewsViewModelFactory
+import com.example.lightningnews.presentation.viewmodel.FRNewsVM
+import com.example.lightningnews.presentation.viewmodel.FRNewsVMFactory
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -17,12 +17,12 @@ import javax.inject.Inject
 class ACMain : AppCompatActivity() {
 
     @Inject
-    lateinit var factory: NewsViewModelFactory
+    lateinit var factory: FRNewsVMFactory
+
     @Inject
     lateinit var newsAdapter: NewsAdapter
-    lateinit var viewModel: NewsVM
+    lateinit var viewModel: FRNewsVM
     private lateinit var binding: AcMainBinding
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +37,7 @@ class ACMain : AppCompatActivity() {
         binding.bnNewsMain.setupWithNavController(
                 navController
         )
-        viewModel = ViewModelProvider(this,factory)[NewsVM::class.java]
+        viewModel = ViewModelProvider(this, factory)[FRNewsVM::class.java]
 
     }
 }

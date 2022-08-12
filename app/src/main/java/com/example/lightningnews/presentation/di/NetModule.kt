@@ -25,7 +25,7 @@ class NetModule {
 
     @Singleton
     @Provides
-    fun provideNewsAPIService(retrofit: Retrofit):NewsAPIService{
+    fun provideNewsAPIService(retrofit: Retrofit): NewsAPIService {
         return retrofit.create(NewsAPIService::class.java)
     }
 }

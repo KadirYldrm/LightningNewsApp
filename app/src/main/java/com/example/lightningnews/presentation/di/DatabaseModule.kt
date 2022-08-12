@@ -16,14 +16,14 @@ class DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideNewsDatabase(app:Application):ArticleDatabase{
-        return Room.databaseBuilder(app,ArticleDatabase::class.java,"news_db")
+    fun provideNewsDatabase(app: Application): ArticleDatabase {
+        return Room.databaseBuilder(app, ArticleDatabase::class.java, "news_db")
                 .fallbackToDestructiveMigration().build()
     }
 
     @Singleton
     @Provides
-    fun provideNewsDao(articleDatabase: ArticleDatabase):ArticleDAO{
+    fun provideNewsDao(articleDatabase: ArticleDatabase): ArticleDAO {
         return articleDatabase.getArticleDAO()
     }
 }

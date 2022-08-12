@@ -20,6 +20,6 @@ class RepositoryModule {
             newsRemoteDataSource: NewsRemoteDataSource,
             newsLocalDataSource: NewsLocalDataSource
     ): NewsRepository {
-        return NewsRepositoryImpl(newsRemoteDataSource,newsLocalDataSource)
+        return NewsRepositoryImpl(newsRemoteDataSource, newsLocalDataSource)
     }
 }
