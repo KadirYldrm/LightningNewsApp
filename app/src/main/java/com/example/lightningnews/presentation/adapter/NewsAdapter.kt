@@ -55,7 +55,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
                 tvDescription.text = article.description
 
                 tvPublishedAt.text = DateTime.convertDateString(date = article.publishedAt!!,
-                        toFormatPattern = DateTime.DefaultFormatPattern,
+                        toFormatPattern = DateTime.DateTimeNV2,
                         fromFormatPattern = DateTime.IsoFormatPattern)
 
                 tvSource.text = article.source?.name

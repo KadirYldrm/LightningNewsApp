@@ -6,7 +6,7 @@ import com.example.lightningnews.domain.repository.NewsRepository
 
 class GetNewsHeadLinesUseCase(private val newsRepository: NewsRepository) {
 
-    suspend fun execute(country:String,page:Int): Resource<APIResponse>{
-        return newsRepository.getNewsHeadlines(country, page)
+    suspend fun execute(category: String,country:String,page:Int): Resource<APIResponse>{
+        return newsRepository.getNewsHeadlines(category,country, page)
     }
 }

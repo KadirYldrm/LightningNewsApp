@@ -13,6 +13,7 @@ import com.example.lightningnews.data.model.APIResponse
 import com.example.lightningnews.data.model.Article
 import com.example.lightningnews.data.util.Resource
 import com.example.lightningnews.domain.usecase.*
+import com.example.lightningnews.presentation.Category
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -29,11 +30,11 @@ class NewsVM(
 
     val newsHeadLines: MutableLiveData<Resource<APIResponse>> = MutableLiveData()
 
-    fun getNewsHeadLines(country: String, page: Int) = viewModelScope.launch(Dispatchers.IO) {
+    fun getNewsHeadLines(category: String, country: String, page: Int) = viewModelScope.launch(Dispatchers.IO) {
         newsHeadLines.postValue(Resource.Loading())
         if (isNetworkAvailable(app)) {
 
-            val apiResult = getNewsHeadLinesUseCase.execute(country, page)
+            val apiResult = getNewsHeadLinesUseCase.execute(category,country, page)
             newsHeadLines.postValue(apiResult)
         }
         else{
