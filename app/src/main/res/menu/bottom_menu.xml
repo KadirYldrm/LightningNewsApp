@@ -7,6 +7,6 @@
         android:title="News Headlines" />
     <item
         android:id="@+id/FRSaved"
-        android:icon="@drawable/ic_baseline_favorite_24"
+        android:icon="@drawable/ic_favorite"
         android:title="Saved News" />
 </menu>

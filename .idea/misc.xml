@@ -3,11 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/kadir/AndroidStudioProjects/LightningNews/app/src/main/res/drawable-night/aaa.xml" value="0.1" />
+        <entry key="..\:/Users/kadir/AndroidStudioProjects/LightningNews/app/src/main/res/drawable-night/hhhh.xml" value="0.128" />
+        <entry key="..\:/Users/kadir/AndroidStudioProjects/LightningNews/app/src/main/res/drawable-night/ic_baseline_favorite_24.xml" value="0.2385" />
+        <entry key="..\:/Users/kadir/AndroidStudioProjects/LightningNews/app/src/main/res/drawable-night/logo.xml" value="0.2385" />
         <entry key="..\:/Users/kadir/AndroidStudioProjects/LightningNews/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2385" />
         <entry key="..\:/Users/kadir/AndroidStudioProjects/LightningNews/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.2385" />
         <entry key="..\:/Users/kadir/AndroidStudioProjects/LightningNews/app/src/main/res/drawable/ic_baseline_format_list_bulleted_24.xml" value="0.2385" />
         <entry key="..\:/Users/kadir/AndroidStudioProjects/LightningNews/app/src/main/res/drawable/ic_baseline_save_alt_24.xml" value="0.2385" />
         <entry key="..\:/Users/kadir/AndroidStudioProjects/LightningNews/app/src/main/res/drawable/ic_fb_save.xml" value="0.2385" />
+        <entry key="..\:/Users/kadir/AndroidStudioProjects/LightningNews/app/src/main/res/drawable/logo.xml" value="0.2385" />
+        <entry key="..\:/Users/kadir/AndroidStudioProjects/LightningNews/app/src/main/res/drawable/logo_black.xml" value="0.128" />
+        <entry key="..\:/Users/kadir/AndroidStudioProjects/LightningNews/app/src/main/res/drawable/logo_favorite.xml" value="0.128" />
+        <entry key="..\:/Users/kadir/AndroidStudioProjects/LightningNews/app/src/main/res/drawable/logo_white.xml" value="0.1" />
+        <entry key="..\:/Users/kadir/AndroidStudioProjects/LightningNews/app/src/main/res/drawable/rv_shape.xml" value="0.176" />
         <entry key="..\:/Users/kadir/AndroidStudioProjects/LightningNews/app/src/main/res/drawable/styles.xml" value="0.2385" />
         <entry key="..\:/Users/kadir/AndroidStudioProjects/LightningNews/app/src/main/res/layout/ac_main.xml" value="0.33" />
         <entry key="..\:/Users/kadir/AndroidStudioProjects/LightningNews/app/src/main/res/layout/fr_info.xml" value="0.36666666666666664" />

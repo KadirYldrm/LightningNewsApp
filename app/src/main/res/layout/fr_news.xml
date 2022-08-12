@@ -23,9 +23,16 @@
         android:visibility="gone"
         android:layout_height="100dp"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvFRNews"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp" />
+        android:id="@+id/srlFRNews"
+        android:layout_height="wrap_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvFRNews"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 </LinearLayout>

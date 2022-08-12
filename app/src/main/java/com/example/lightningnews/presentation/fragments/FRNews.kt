@@ -1,6 +1,7 @@
 package com.example.lightningnews.presentation.fragments
 
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -29,7 +30,7 @@ class FRNews : Fragment(R.layout.fr_news) {
     private lateinit var viewModel: NewsVM
     private lateinit var newsAdapter: NewsAdapter
     private lateinit var fragmentNewsBinding: FrNewsBinding
-    private var country = "us"
+    private var country = "tr"
     private var page = 1
     private var isScrolling = false
     private var isLoading = false
@@ -70,6 +71,7 @@ class FRNews : Fragment(R.layout.fr_news) {
     }
 
     private fun viewNewsList() {
+
         viewModel.getNewsHeadLines(country, page)
         viewModel.newsHeadLines.observe(viewLifecycleOwner) { response ->
             when (response) {
@@ -100,6 +102,47 @@ class FRNews : Fragment(R.layout.fr_news) {
                 }
             }
         }
+
+        fragmentNewsBinding.srlFRNews.setOnRefreshListener {
+
+            viewModel.getNewsHeadLines(country, page)
+            viewModel.newsHeadLines.observe(viewLifecycleOwner) { response ->
+                when (response) {
+                    is Resource.Success -> {
+                        isLoading = false
+                        fragmentNewsBinding.pbFRNews.visibility = View.GONE
+                        response.data?.let {
+                            newsAdapter.differ.submitList(it.articles.toList())
+                            if (it.totalResults % 20 == 0) {
+                                pages = it.totalResults / 20
+                            } else {
+                                pages = it.totalResults / 20 + 1
+                            }
+                            isLastPage = page == pages
+                        }
+                    }
+                    is Resource.Error -> {
+                        isLoading = false
+                        fragmentNewsBinding.pbFRNews.visibility = View.GONE
+                        response.message?.let {
+                            Toast.makeText(activity, "An error occurred: $it", Toast.LENGTH_LONG).show()
+                        }
+                    }
+                    is Resource.Loading -> {
+                        isLoading = true
+                        fragmentNewsBinding.pbFRNews.visibility = View.VISIBLE
+
+                    }
+                }
+            }
+
+            Handler().postDelayed(Runnable{
+                fragmentNewsBinding.srlFRNews.isRefreshing=false
+            },2000)
+
+        }
+
+
     }
 
     private fun initRecyclerView() {

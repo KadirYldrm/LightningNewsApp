@@ -2,11 +2,13 @@ package com.example.lightningnews.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.lightningnews.R
 import com.example.lightningnews.data.model.Article
 import com.example.lightningnews.databinding.RowNewsBinding
 import com.example.lightningnews.dateTimeUtils.DateTime
@@ -60,12 +62,14 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
             }
             Glide.with(binding.ivArticleImage.context)
                     .load(article.urlToImage)
+                    .placeholder(R.drawable.loading_bg)
                     .into(binding.ivArticleImage)
+            binding.ivFavoriteItem.setOnClickListener {
 
-            binding.ivRowItem.setOnClickListener {
                 clicked = true
                 if (clicked) {
                     onItemClickListener?.let {
+                        binding.ivFavoriteItem.setImageResource(R.drawable.fovorite_bg)
                         it(article)
                     }
                 } else {

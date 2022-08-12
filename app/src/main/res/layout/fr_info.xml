@@ -15,7 +15,7 @@
         android:layout_margin="10dp"
         app:tint="@color/white"
         app:backgroundTint="@color/bordeaux"
-        android:src="@drawable/ic_baseline_favorite_24"
+        android:src="@drawable/ic_favorite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
