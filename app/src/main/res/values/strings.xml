@@ -9,4 +9,6 @@
     <string name="business">Business</string>
     <string name="entertainment">Entertainment</string>
     <string name="general">general</string>
+    <string name="tr">TR</string>
+    <string name="us">US</string>
 </resources>
