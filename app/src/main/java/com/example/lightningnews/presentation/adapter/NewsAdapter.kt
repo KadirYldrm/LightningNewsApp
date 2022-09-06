@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.lightningnews.R
 import com.example.lightningnews.data.model.Article
 import com.example.lightningnews.databinding.RowNewsBinding
-import com.example.lightningnews.dateTimeUtils.DateTime
+import java.text.SimpleDateFormat
 
 class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
     var clicked = false
@@ -48,12 +48,16 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
 
         fun bind(article: Article) {
             with(binding) {
+
                 tvTitle.text = article.title
+
                 tvDescription.text = article.description
 
-                tvPublishedAt.text = DateTime.convertDateString(date = article.publishedAt!!,
-                        toFormatPattern = DateTime.DateTimeNV2,
-                        fromFormatPattern = DateTime.IsoFormatPattern)
+                val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
+                val formatter = SimpleDateFormat("dd/MM/yyyy HH:mm")
+                val output = article.publishedAt?.let { parser.parse(it)?.let { formatter.format(it) } }
+
+                tvPublishedAt.text = output
 
                 tvSource.text = article.source?.name
             }
