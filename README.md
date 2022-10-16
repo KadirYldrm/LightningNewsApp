@@ -15,3 +15,9 @@
 - Gson
 - Retrofit
 - Mock Web Server
+
+
+
+
+https://user-images.githubusercontent.com/109507959/196036822-0a126405-92db-4074-a0a4-b73cb0ad8e24.mp4
+
